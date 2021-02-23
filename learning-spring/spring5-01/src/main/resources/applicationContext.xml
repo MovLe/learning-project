@@ -53,5 +53,10 @@
     </bean>
 
 
+    <bean id="userService" class="com.movle.basic.UserServiceImpl">
+        <property name="userDao">
+            <bean class="com.movle.basic.UserDaoImpl" />
+        </property>
+    </bean>
 
 </beans>
