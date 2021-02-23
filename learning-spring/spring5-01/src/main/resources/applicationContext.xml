@@ -4,15 +4,26 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="person" class="com.movle.basic.Person" >
+        <property name="id" value="100"/>
+        <property name="name" value="tongguosetterzhuru"/>
+    </bean>
+
+    <bean id="person1" class="com.movle.basic.Person" >
         <property name="id">
-            <value>100</value>
+            <value>200</value>
         </property>
         <property name="name">
-            <value>tongguosetterzhuru</value>
+            <value>jdkleixing</value>
+        </property>
+        <property name="emails">
+            <list>
+                <value>a@qq.com</value>
+                <value>b@qq.com</value>
+                <value>c@qq.com</value>
+            </list>
         </property>
     </bean>
 
-    <bean id="person1" class="com.movle.basic.Person" />
 
 
 </beans>

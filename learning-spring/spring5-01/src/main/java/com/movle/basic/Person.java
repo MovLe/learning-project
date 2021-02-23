@@ -1,5 +1,7 @@
 package com.movle.basic;
 
+import java.util.Arrays;
+
 /**
  * @ClassName Person
  * @MethodDesc: TODO Person功能介绍
@@ -12,6 +14,16 @@ public class Person {
 
     private Integer id;
     private String name;
+
+    private String [] emails;
+
+    public String[] getEmails() {
+        return emails;
+    }
+
+    public void setEmails(String[] emails) {
+        this.emails = emails;
+    }
 
     public Integer getId() {
         return id;
@@ -34,6 +46,7 @@ public class Person {
         return "Person{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", emails=" + Arrays.toString(emails) +
                 '}';
     }
 }

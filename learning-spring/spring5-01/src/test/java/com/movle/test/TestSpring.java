@@ -7,7 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  * @ClassName TestSpring
- * @MethodDesc: TODO TestSpring功能介绍
+ * @MethodDesc: 用于spring的功能测试
  * @Author Movle
  * @Date 2021/2/22 下午10:59
  * @Version 1.0
@@ -117,12 +117,30 @@ public class TestSpring {
      * 用于测试：通过spring的配置文件进行赋值
      */
     @Test
-    public void test(){
+    public void test8(){
 
         ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
+
         Person person = (Person) ctx.getBean("person");
 
         System.out.println("person="+person);
+    }
+
+
+    /**
+     * 用于测试：JDK类型成员遍历的赋值：数组
+     */
+    @Test
+    public void test9(){
+
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
+
+        Person person = (Person) ctx.getBean("person1");
+
+        String [] emails = person.getEmails();
+        for (String email:emails) {
+            System.out.println("email="+email);
+        }
     }
 
 }
