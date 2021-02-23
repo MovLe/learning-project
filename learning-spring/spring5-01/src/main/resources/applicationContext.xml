@@ -59,4 +59,12 @@
         </property>
     </bean>
 
+    <bean id="userDao" class="com.movle.basic.UserDaoImpl"/>
+
+    <bean id="userService1" class="com.movle.basic.UserServiceImpl">
+        <property name="userDao">
+            <ref bean="userDao"/>
+        </property>
+    </bean>
+
 </beans>

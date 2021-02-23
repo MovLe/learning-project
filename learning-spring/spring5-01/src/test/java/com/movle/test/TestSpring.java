@@ -180,7 +180,7 @@ public class TestSpring {
     }
 
     /**
-     * 用于测试：用户自定义类型成员变量赋值
+     * 用于测试：用户自定义类型成员变量赋值：普通和ref两种方式
      */
     @Test
     public void test10(){
@@ -190,6 +190,15 @@ public class TestSpring {
 
         userService.register(new User("movle","123456"));
         userService.login("xiaoming","32323234");
+
+
+        System.out.println("--------分割-----------");
+        UserService userService1 = (UserService) ctx.getBean("userService1");
+
+        userService1.register(new User("movle1","123456"));
+        userService1.login("xiaoming1","32323234");
+
+
     }
 }
 
