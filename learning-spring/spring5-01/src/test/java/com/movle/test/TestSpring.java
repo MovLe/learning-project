@@ -5,6 +5,8 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.Set;
+
 /**
  * @ClassName TestSpring
  * @MethodDesc: 用于spring的功能测试
@@ -140,6 +142,23 @@ public class TestSpring {
         String [] emails = person.getEmails();
         for (String email:emails) {
             System.out.println("email="+email);
+        }
+    }
+
+    /**
+     * 用于测试：JDK类型成员遍历的赋值：set
+     */
+    @Test
+    public void test(){
+
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
+
+        Person person = (Person) ctx.getBean("person2");
+
+        Set<String> tels = person.getTels();
+
+        for (String tel:tels) {
+            System.out.println("tel="+tel);
         }
     }
 

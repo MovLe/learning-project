@@ -24,6 +24,29 @@
         </property>
     </bean>
 
+    <bean id="person2" class="com.movle.basic.Person">
+        <property name="id">
+            <value>200</value>
+        </property>
+        <property name="name">
+            <value>jdkleixing</value>
+        </property>
+        <property name="emails">
+            <list>
+                <value>a@qq.com</value>
+                <value>b@qq.com</value>
+                <value>c@qq.com</value>
+            </list>
+        </property>
+        <property name="tels">
+            <set>
+                <value>139111111</value>
+                <value>133111111</value>
+                <value>134111111</value>
+            </set>
+        </property>
+    </bean>
+
 
 
 </beans>

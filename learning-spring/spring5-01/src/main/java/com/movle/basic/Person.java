@@ -1,6 +1,7 @@
 package com.movle.basic;
 
 import java.util.Arrays;
+import java.util.Set;
 
 /**
  * @ClassName Person
@@ -16,10 +17,20 @@ public class Person {
     private String name;
 
     private String [] emails;
+    private Set<String> tels;
+
+    public Set<String> getTels() {
+        return tels;
+    }
+
+    public void setTels(Set<String> tels) {
+        this.tels = tels;
+    }
 
     public String[] getEmails() {
         return emails;
     }
+
 
     public void setEmails(String[] emails) {
         this.emails = emails;
@@ -47,6 +58,7 @@ public class Person {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", emails=" + Arrays.toString(emails) +
+                ", tels=" + tels +
                 '}';
     }
 }
