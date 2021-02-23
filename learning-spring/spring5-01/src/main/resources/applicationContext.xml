@@ -8,45 +8,7 @@
         <property name="name" value="tongguosetterzhuru"/>
     </bean>
 
-    <bean id="person1" class="com.movle.basic.Person" >
-        <property name="id">
-            <value>200</value>
-        </property>
-        <property name="name">
-            <value>jdkleixing</value>
-        </property>
-        <property name="emails">
-            <list>
-                <value>a@qq.com</value>
-                <value>b@qq.com</value>
-                <value>c@qq.com</value>
-            </list>
-        </property>
-    </bean>
-
-    <bean id="person2" class="com.movle.basic.Person">
-        <property name="id">
-            <value>200</value>
-        </property>
-        <property name="name">
-            <value>jdkleixing</value>
-        </property>
-        <property name="emails">
-            <list>
-                <value>a@qq.com</value>
-                <value>b@qq.com</value>
-                <value>c@qq.com</value>
-            </list>
-        </property>
-        <property name="tels">
-            <set>
-                <value>139111111</value>
-                <value>133111111</value>
-                <value>134111111</value>
-            </set>
-        </property>
-    </bean>
-    <bean id="person3" class="com.movle.basic.Person">
+    <bean id="person4" class="com.movle.basic.Person">
         <property name="id">
             <value>200</value>
         </property>
@@ -73,6 +35,15 @@
                 <value>天安门</value>
                 <value>西单</value>
             </list>
+        </property>
+        <property name="qqs">
+            <map>
+                <entry key="movle" value="12891232"/>
+                <entry>
+                    <key><value>kai</value></key>
+                    <value>83192329</value>
+                </entry>
+            </map>
         </property>
     </bean>
 

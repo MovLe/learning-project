@@ -6,6 +6,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -129,63 +130,23 @@ public class TestSpring {
         System.out.println("person="+person);
     }
 
-
     /**
-     * 用于测试：JDK类型成员遍历的赋值：数组
+     * 用于测试：JDK类型成员遍历的赋值：数组，set，list，map
      */
     @Test
     public void test9(){
 
         ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
 
-        Person person = (Person) ctx.getBean("person1");
+        Person person = (Person) ctx.getBean("person4");
 
-        String [] emails = person.getEmails();
-        for (String email:emails) {
-            System.out.println("email="+email);
-        }
-    }
-
-    /**
-     * 用于测试：JDK类型成员遍历的赋值：set
-     */
-    @Test
-    public void test10(){
-
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
-
-        Person person = (Person) ctx.getBean("person2");
-
+        System.out.println("-----------数组------------");
         String [] emails = person.getEmails();
         for (String email:emails) {
             System.out.println("email="+email);
         }
 
-        System.out.println("-----------------------");
-
-        Set<String> tels = person.getTels();
-
-        for (String tel:tels) {
-            System.out.println("tel="+tel);
-        }
-    }
-
-    /**
-     * 用于测试：JDK类型成员遍历的赋值：list
-     */
-    @Test
-    public void test11(){
-
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
-
-        Person person = (Person) ctx.getBean("person3");
-
-        String [] emails = person.getEmails();
-        for (String email:emails) {
-            System.out.println("email="+email);
-        }
-
-        System.out.println("-----------------------");
+        System.out.println("------------set-----------");
 
         Set<String> tels = person.getTels();
 
@@ -193,12 +154,19 @@ public class TestSpring {
             System.out.println("tel="+tel);
         }
 
-        System.out.println("-----------------------");
+        System.out.println("--------list---------------");
 
         List<String> address = person.getAddress();
 
         for (String adress1:address) {
             System.out.println("adress1="+adress1);
+        }
+
+        System.out.println("----------map-------------");
+        Map<String,String> qqs=person.getQqs();
+        Set<String> keys=qqs.keySet();
+        for (String key:keys) {
+            System.out.println("key = "+key+" and value = "+qqs.get(key));
         }
     }
 }
