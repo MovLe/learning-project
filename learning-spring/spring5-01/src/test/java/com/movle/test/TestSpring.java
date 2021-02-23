@@ -1,0 +1,129 @@
+package com.movle.test;
+
+import com.movle.basic.Person;
+import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+/**
+ * @ClassName TestSpring
+ * @MethodDesc: TODO TestSpring功能介绍
+ * @Author Movle
+ * @Date 2021/2/22 下午10:59
+ * @Version 1.0
+ * @Email movle_xjk@foxmail.com
+ **/
+public class TestSpring {
+    /**
+     * 用于测试：Spring的第一个程序
+     */
+    @Test
+    public void test1() {
+        ApplicationContext ctx=new ClassPathXmlApplicationContext("/applicationContext.xml");
+
+        Person person = (Person) ctx.getBean("person");
+
+        System.out.println("person:"+person);
+    }
+
+    /**
+     * 用于测试：Spring工厂提供的其他方法
+     */
+    @Test
+    public void test2(){
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
+
+        Person person = ctx.getBean("person",Person.class);
+
+        System.out.println("person:"+person);
+
+    }
+
+    /**
+     * 用于测试：Spring工厂提供的其他方法
+     * 直接用类型创建，注意这种类型在bean标签中只能有一个
+     */
+    @Test
+    public void test3(){
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
+
+        Person person = ctx.getBean(Person.class);
+
+        System.out.println("person:"+person);
+    }
+
+    /**
+     * 用于测试：Spring工厂提供的其他方法
+     * 取得bean的id，获取的是Spring工厂配置文件中的所有bean标签的id值
+     */
+    @Test
+    public void test4(){
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
+
+        String[] beanDefinitionNames = ctx.getBeanDefinitionNames();
+
+        for (String beanDefinitionName:beanDefinitionNames) {
+            System.out.println("beanDefinitionName="+beanDefinitionName);
+        }
+
+    }
+
+    /**
+     * 用于测试：Spring工厂提供的其他方法
+     * 根据类型获得Spring配置文件中对应的id值
+     */
+    @Test
+    public void test5(){
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
+
+        String[] beanNamesForType= ctx.getBeanNamesForType(Person.class);
+
+        for (String id:beanNamesForType) {
+            System.out.println("id="+id);
+        }
+
+    }
+    /**
+     * 用于测试：Spring工厂提供的其他方法
+     * 用于判断是否存在指定id值的bean
+     */
+    @Test
+    public void test6(){
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
+
+        if(ctx.containsBeanDefinition("person")){
+            System.out.println("true="+true);
+        }else{
+            System.out.println("false="+false);
+        }
+
+    }
+    /**
+     * 用于测试：Spring工厂提供的其他方法
+     * 用于判断是否存在指定id值的bean
+     */
+    @Test
+    public void test7(){
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
+
+        if(ctx.containsBean("person")){
+            System.out.println("true="+true);
+        }else{
+            System.out.println("false="+false);
+        }
+
+    }
+    /**
+     * 用于测试：通过spring的配置文件进行赋值
+     */
+    @Test
+    public void test(){
+
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
+        Person person = (Person) ctx.getBean("person");
+
+        System.out.println("person="+person);
+    }
+
+}
+
