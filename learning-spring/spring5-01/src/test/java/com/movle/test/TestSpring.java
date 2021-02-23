@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -149,11 +150,18 @@ public class TestSpring {
      * 用于测试：JDK类型成员遍历的赋值：set
      */
     @Test
-    public void test(){
+    public void test10(){
 
         ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
 
         Person person = (Person) ctx.getBean("person2");
+
+        String [] emails = person.getEmails();
+        for (String email:emails) {
+            System.out.println("email="+email);
+        }
+
+        System.out.println("-----------------------");
 
         Set<String> tels = person.getTels();
 
@@ -162,5 +170,36 @@ public class TestSpring {
         }
     }
 
+    /**
+     * 用于测试：JDK类型成员遍历的赋值：list
+     */
+    @Test
+    public void test11(){
+
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("/applicationContext.xml");
+
+        Person person = (Person) ctx.getBean("person3");
+
+        String [] emails = person.getEmails();
+        for (String email:emails) {
+            System.out.println("email="+email);
+        }
+
+        System.out.println("-----------------------");
+
+        Set<String> tels = person.getTels();
+
+        for (String tel:tels) {
+            System.out.println("tel="+tel);
+        }
+
+        System.out.println("-----------------------");
+
+        List<String> address = person.getAddress();
+
+        for (String adress1:address) {
+            System.out.println("adress1="+adress1);
+        }
+    }
 }
 

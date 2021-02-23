@@ -46,6 +46,35 @@
             </set>
         </property>
     </bean>
+    <bean id="person3" class="com.movle.basic.Person">
+        <property name="id">
+            <value>200</value>
+        </property>
+        <property name="name">
+            <value>jdkleixing</value>
+        </property>
+        <property name="emails">
+            <list>
+                <value>a@qq.com</value>
+                <value>b@qq.com</value>
+                <value>c@qq.com</value>
+            </list>
+        </property>
+        <property name="tels">
+            <set>
+                <value>139111111</value>
+                <value>133111111</value>
+                <value>134111111</value>
+            </set>
+        </property>
+        <property name="address">
+            <list>
+                <value>中关村</value>
+                <value>天安门</value>
+                <value>西单</value>
+            </list>
+        </property>
+    </bean>
 
 
 

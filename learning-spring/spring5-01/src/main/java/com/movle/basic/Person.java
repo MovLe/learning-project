@@ -1,6 +1,7 @@
 package com.movle.basic;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -18,6 +19,15 @@ public class Person {
 
     private String [] emails;
     private Set<String> tels;
+    private List<String> address;
+
+    public List<String> getAddress() {
+        return address;
+    }
+
+    public void setAddress(List<String> address) {
+        this.address = address;
+    }
 
     public Set<String> getTels() {
         return tels;
