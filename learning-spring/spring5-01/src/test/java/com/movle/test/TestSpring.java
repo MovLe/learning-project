@@ -7,6 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 
 /**
@@ -131,7 +132,7 @@ public class TestSpring {
     }
 
     /**
-     * 用于测试：JDK类型成员遍历的赋值：数组，set，list，map
+     * 用于测试：JDK类型成员遍历的赋值：数组，set，list，map,properties
      */
     @Test
     public void test9(){
@@ -168,6 +169,12 @@ public class TestSpring {
         for (String key:keys) {
             System.out.println("key = "+key+" and value = "+qqs.get(key));
         }
+
+        System.out.println("-----------properties-------------");
+        Properties p =person.getP();
+        System.out.println("key is key1 "+"and values is "+p.getProperty("key1"));
+        System.out.println("key is key2 "+"and values is "+p.getProperty("key2"));
+
     }
 }
 

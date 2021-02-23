@@ -1,9 +1,6 @@
 package com.movle.basic;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @ClassName Person
@@ -22,6 +19,16 @@ public class Person {
     private Set<String> tels;
     private List<String> address;
     private Map<String,String> qqs;
+
+    private Properties p;
+
+    public Properties getP() {
+        return p;
+    }
+
+    public void setP(Properties p) {
+        this.p = p;
+    }
 
     public Map<String, String> getQqs() {
         return qqs;

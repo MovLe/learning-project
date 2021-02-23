@@ -9,9 +9,7 @@
     </bean>
 
     <bean id="person4" class="com.movle.basic.Person">
-        <property name="id">
-            <value>200</value>
-        </property>
+        <property name="id" value="200"/>
         <property name="name">
             <value>jdkleixing</value>
         </property>
@@ -44,6 +42,13 @@
                     <value>83192329</value>
                 </entry>
             </map>
+        </property>
+
+        <property name="p">
+            <props>
+                <prop key="key1">value1</prop>
+                <prop key="key2">value2</prop>
+            </props>
         </property>
     </bean>
 
