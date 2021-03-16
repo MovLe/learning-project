@@ -1,6 +1,4 @@
 /.idea/
 .gitignore
 /learning-spring/spring5-01/target/
-!/.idea/
-learning-mybatis/mybatis-01/src/test/
-learning-mybatis/mybatis-02/src/
+
