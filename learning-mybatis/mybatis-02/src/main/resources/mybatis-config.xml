@@ -21,6 +21,6 @@
         </environment>
     </environments>
     <mappers>
-        <package name="com.movle.mybatis.simple.mapper"/>
+        <mapper resource="com/movle/mybatis/simple/mapper/UserMapper.xml" />
     </mappers>
 </configuration>

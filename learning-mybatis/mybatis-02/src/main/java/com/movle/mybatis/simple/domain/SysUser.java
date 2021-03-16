@@ -1,5 +1,6 @@
 package com.movle.mybatis.simple.domain;
 
+import java.util.Arrays;
 import java.util.Date;
 
 /**
@@ -21,9 +22,7 @@ public class SysUser {
     private byte[] headImg;
     private Date createTime;
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
 
     public void setId(Long id) {
         this.id = id;
@@ -75,5 +74,18 @@ public class SysUser {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    @Override
+    public String toString() {
+        return "SysUser{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", userPassword='" + userPassword + '\'' +
+                ", userEmail='" + userEmail + '\'' +
+                ", userInfo='" + userInfo + '\'' +
+                ", headImg=" + Arrays.toString(headImg) +
+                ", createTime=" + createTime +
+                '}';
     }
 }
