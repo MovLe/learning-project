@@ -2,7 +2,7 @@ package com.movle.mybatis.simple.domain;
 
 /**
  * @ClassName SysPrivilege
- * @MethodDesc: TODO SysPrivilege功能介绍
+ * @MethodDesc: 实体类
  * @Author Movle
  * @Date 2021/3/16 下午9:24
  * @Version 1.0

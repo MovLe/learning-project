@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  * @ClassName SysRole
- * @MethodDesc: TODO SysRole功能介绍
+ * @MethodDesc: 实体类
  * @Author Movle
  * @Date 2021/3/16 下午9:22
  * @Version 1.0
