@@ -161,4 +161,45 @@ public class UserMapperTest extends BaseMapperTest{
             sqlSession.close();
         }
     }
+
+    @Test
+    public void testUpdateById(){
+        SqlSession sqlSession = getSqlSession();
+        try{
+            UserMapper userMapper=sqlSession.getMapper(UserMapper.class);
+
+            SysUser user=userMapper.selectById(1L);
+
+            user.setUserName("admin_test");
+            user.setUserEmail("admin_test@mybatis.tk");
+
+            int result = userMapper.updateById(user);
+
+            System.out.println("result:"+result);
+
+        }finally {
+            sqlSession.commit();
+            sqlSession.close();
+        }
+    }
+    @Test
+    public void testDeleteById(){
+        SqlSession sqlSession = getSqlSession();
+
+        try{
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+            int result = userMapper.deleteById(1005L);
+
+            System.out.println("result:"+result);
+        }finally {
+            sqlSession.commit();
+            sqlSession.close();
+        }
+    }
+
+    @Test
+    public void testSelectRolesByUserIdAndRoleEnabled(){
+        SqlSession sqlSession =getSqlSession();
+    }
 }
