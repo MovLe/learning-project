@@ -6,6 +6,7 @@ import com.movle.mybatis.simple.mapper.UserMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -82,6 +83,81 @@ public class UserMapperTest extends BaseMapperTest{
             List<SysRole> roleList = userMapper.selectRolesByUserId(1L);
             printList2(roleList);
         }finally {
+            sqlSession.close();
+        }
+    }
+
+    @Test
+    public void testInsert(){
+        SqlSession sqlSession = getSqlSession();
+
+        try{
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            SysUser sysUser = new SysUser();
+            sysUser.setUserName("test4");
+            sysUser.setUserPassword("123456");
+            sysUser.setUserEmail("test4@mybatis.tk");
+            sysUser.setUserInfo("test4 info");
+            sysUser.setHeadImg(new byte[]{1,2,3});
+            sysUser.setCreateTime(new Date());
+
+            int result = userMapper.insertInto(sysUser);
+            System.out.println("result:"+result);
+
+        }finally {
+            //sqlSession.rollback();
+            sqlSession.commit();
+
+            sqlSession.close();
+        }
+    }
+    @Test
+    public void testInsert2(){
+        SqlSession sqlSession = getSqlSession();
+
+        try{
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            SysUser sysUser = new SysUser();
+            sysUser.setUserName("test5");
+            sysUser.setUserPassword("123456");
+            sysUser.setUserEmail("test5@mybatis.tk");
+            sysUser.setUserInfo("test5 info");
+            sysUser.setHeadImg(new byte[]{1,2,3});
+            sysUser.setCreateTime(new Date());
+
+            int result = userMapper.insertInto2(sysUser);
+            Long id = sysUser.getId();
+
+            System.out.println("result:"+result+" id:"+id);
+        }finally {
+            //sqlSession.rollback();
+            sqlSession.commit();
+
+            sqlSession.close();
+        }
+    }
+    @Test
+    public void testInsert3(){
+        SqlSession sqlSession = getSqlSession();
+
+        try{
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            SysUser sysUser = new SysUser();
+            sysUser.setUserName("test6");
+            sysUser.setUserPassword("123456");
+            sysUser.setUserEmail("test6@mybatis.tk");
+            sysUser.setUserInfo("test6 info");
+            sysUser.setHeadImg(new byte[]{1,2,3});
+            sysUser.setCreateTime(new Date());
+
+            int result = userMapper.insertInto3(sysUser);
+
+            long id = sysUser.getId();
+            System.out.println("result:"+result+" id:"+id);
+        }finally {
+            //sqlSession.rollback();
+            sqlSession.commit();
+
             sqlSession.close();
         }
     }

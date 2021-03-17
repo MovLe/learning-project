@@ -11,4 +11,11 @@ public interface UserMapper {
     List<SysUser> selectAll();
 
     List<SysRole> selectRolesByUserId(Long userId);
+
+    int insertInto(SysUser sysUser);
+
+    int insertInto2(SysUser sysUser);
+
+    int insertInto3(SysUser sysUser);
+
 }
