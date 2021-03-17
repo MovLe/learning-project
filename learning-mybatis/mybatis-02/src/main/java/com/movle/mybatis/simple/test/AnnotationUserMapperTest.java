@@ -1,7 +1,9 @@
 package com.movle.mybatis.simple.test;
 
 import com.movle.mybatis.simple.domain.SysRole;
+import com.movle.mybatis.simple.domain.SysUser;
 import com.movle.mybatis.simple.mapper.RoleMapper;
+import com.movle.mybatis.simple.mapper.UserMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
@@ -111,6 +113,28 @@ public class AnnotationUserMapperTest extends BaseMapperTest{
 
             long id = sysRole.getId();
             System.out.println("result:"+result+" id:"+id);
+        }finally {
+            sqlSession.commit();
+            sqlSession.close();
+        }
+    }
+
+    @Test
+    public void testUpdateById(){
+        SqlSession sqlSession = getSqlSession();
+        try{
+            RoleMapper roleMapper=sqlSession.getMapper(RoleMapper.class);
+
+            SysRole sysRole=new SysRole();
+
+
+            sysRole.setRoleName("管理员2");
+            sysRole.setEnabled(2);
+
+            int result = roleMapper.updateById("管理员2",2,2,new Date(),2L);
+
+            System.out.println("result:"+result);
+
         }finally {
             sqlSession.commit();
             sqlSession.close();
