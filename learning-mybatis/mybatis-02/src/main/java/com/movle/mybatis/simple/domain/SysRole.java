@@ -68,4 +68,16 @@ public class SysRole {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
+
+    @Override
+    public String toString() {
+        return "SysRole{" +
+                "id=" + id +
+                ", roleName='" + roleName + '\'' +
+                ", enabled=" + enabled +
+                ", createBy=" + createBy +
+                ", createTime=" + createTime +
+                ", user=" + user +
+                '}';
+    }
 }
