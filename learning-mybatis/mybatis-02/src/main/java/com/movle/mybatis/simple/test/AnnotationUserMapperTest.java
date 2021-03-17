@@ -125,13 +125,24 @@ public class AnnotationUserMapperTest extends BaseMapperTest{
         try{
             RoleMapper roleMapper=sqlSession.getMapper(RoleMapper.class);
 
-            SysRole sysRole=new SysRole();
+            int result = roleMapper.updateById("管理员2",2,2,new Date(),3L);
+
+            System.out.println("result:"+result);
+
+        }finally {
+            sqlSession.commit();
+            sqlSession.close();
+        }
+    }
+
+    @Test
+    public void testDeleteById(){
+        SqlSession sqlSession = getSqlSession();
+        try{
+            RoleMapper roleMapper=sqlSession.getMapper(RoleMapper.class);
 
 
-            sysRole.setRoleName("管理员2");
-            sysRole.setEnabled(2);
-
-            int result = roleMapper.updateById("管理员2",2,2,new Date(),2L);
+            int result = roleMapper.deleteById(5L);
 
             System.out.println("result:"+result);
 

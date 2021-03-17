@@ -38,4 +38,6 @@ public interface RoleMapper {
     int updateById(@Param("roleName") String roleName, @Param("enabled") Integer enabled, @Param("createBy") Integer createBy, @Param("createTime") Date createTime, @Param("id") Long id);
 
 
+    @Delete("delete from sys_role where id = #{id}")
+    int deleteById(Long id);
 }
