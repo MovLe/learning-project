@@ -211,4 +211,47 @@ public class UserMapperTest extends BaseMapperTest{
             sqlSession.close();
         }
     }
+
+    /**
+     * 动态sql之根据动态条件查询用户信息
+     */
+    @Test
+    public void testSelectByUser(){
+        SqlSession sqlSession = getSqlSession();
+        try{
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            SysUser sysUser = new SysUser();
+            sysUser.setUserName("est");
+            sysUser.setUserEmail("test3@mybatis.tk");
+            List<SysUser> sysUsers = userMapper.selectByUser(sysUser);
+
+            printList(sysUsers);
+        }finally {
+            sqlSession.commit();
+            sqlSession.close();
+        }
+    }
+
+    /**
+     * 动态sql之根据主键更新
+     */
+    @Test
+    public void testUpdateByIdSelective(){
+        SqlSession sqlSession = getSqlSession();
+        try{
+
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            SysUser sysUser=new SysUser();
+            sysUser.setId(1007L);
+            sysUser.setUserName("testXXX");
+
+            int result = userMapper.updateByIdSelective(sysUser);
+
+            System.out.println("result:"+result);
+
+        }finally {
+            sqlSession.commit();
+            sqlSession.close();
+        }
+    }
 }
