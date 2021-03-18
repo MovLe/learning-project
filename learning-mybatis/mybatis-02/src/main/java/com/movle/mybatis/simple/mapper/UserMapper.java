@@ -66,4 +66,16 @@ public interface UserMapper {
      * @return
      */
     int updateByIdSelective2(SysUser sysUser);
+
+    /**
+     * 动态sql-foreach实现in集合-根据用户id集合查询
+     * @param idList
+     * @return
+     */
+    List<SysUser> selectByIdList(List<Long> idList);
+
+    /**
+     * 动态sql-foreach实现批量插入-批量插入用户信息
+     */
+    int insertList(List<SysUser> userList);
 }

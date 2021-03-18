@@ -7,6 +7,7 @@ import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -339,6 +340,55 @@ public class UserMapperTest extends BaseMapperTest{
 
             int result = userMapper.updateByIdSelective2(sysUser);
 
+            System.out.println("result:"+result);
+
+        }finally {
+            sqlSession.commit();
+            sqlSession.close();
+        }
+    }
+
+    /**
+     * 动态sql-foreach实现in集合-根据用户id集合查询
+     */
+    @Test
+    public void testSelectByIdList(){
+        SqlSession sqlSession=getSqlSession();
+        try{
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            List<Long> idList =new ArrayList<>();
+            idList.add(1007L);
+            idList.add(1015L);
+
+            List<SysUser> sysUsers = userMapper.selectByIdList(idList);
+
+            printList(sysUsers);
+
+        }finally {
+            sqlSession.commit();
+            sqlSession.close();
+        }
+    }
+
+    /**
+     * 动态sql-foreach实现批量插入-批量插入用户信息
+     */
+    @Test
+    public void testInsertList(){
+        SqlSession sqlSession = getSqlSession();
+        try{
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            List<SysUser> sysUsers = new ArrayList<>();
+
+            for(int i =0;i<3;i++){
+                SysUser sysUser = new SysUser();
+                sysUser.setUserName("test"+i);
+                sysUser.setUserPassword("223455");
+                sysUser.setUserEmail("test"+i+"@mybatis.tk");
+                sysUsers.add(sysUser);
+            }
+
+            int result = userMapper.insertList(sysUsers);
             System.out.println("result:"+result);
 
         }finally {
