@@ -5,6 +5,7 @@ import com.movle.mybatis.simple.domain.SysUser;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface UserMapper {
     SysUser selectById(Long id);
@@ -78,4 +79,11 @@ public interface UserMapper {
      * 动态sql-foreach实现批量插入-批量插入用户信息
      */
     int insertList(List<SysUser> userList);
+
+    /**
+     * 动态sql-foreach实现动态update-通过Map更新列
+     * @param map
+     * @return
+     */
+    int updateByMap(Map<String,Object> map);
 }

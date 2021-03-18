@@ -7,9 +7,7 @@ import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * @ClassName UserMapperTest
@@ -391,6 +389,30 @@ public class UserMapperTest extends BaseMapperTest{
             int result = userMapper.insertList(sysUsers);
             System.out.println("result:"+result);
 
+        }finally {
+            sqlSession.commit();
+            sqlSession.close();
+        }
+    }
+
+    /**
+     * 动态sql-foreach实现动态update-通过Map更新列
+     */
+    @Test
+    public void testUpdateByMap(){
+        SqlSession sqlSession = getSqlSession();
+        try{
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+            Map<String,Object> map = new HashMap<String,Object>();
+
+            map.put("id",1L);
+            map.put("user_email","test999@mybatis.tk");
+            map.put("user_password","999999");
+
+            userMapper.updateByMap(map);
+            SysUser user = userMapper.selectById(1L);
+            System.out.println("user:"+user);
         }finally {
             sqlSession.commit();
             sqlSession.close();
