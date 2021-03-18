@@ -38,4 +38,11 @@ public interface UserMapper {
      * @return
      */
     int updateByIdSelective(SysUser sysUser);
+
+    /**
+     * 动态sql之insert的动态sql插入
+     * @param sysUser
+     * @return
+     */
+    int insertInto4(SysUser sysUser);
 }

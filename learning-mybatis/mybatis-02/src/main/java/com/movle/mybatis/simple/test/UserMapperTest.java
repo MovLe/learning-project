@@ -3,6 +3,7 @@ package com.movle.mybatis.simple.test;
 import com.movle.mybatis.simple.domain.SysRole;
 import com.movle.mybatis.simple.domain.SysUser;
 import com.movle.mybatis.simple.mapper.UserMapper;
+import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
@@ -246,6 +247,32 @@ public class UserMapperTest extends BaseMapperTest{
             sysUser.setUserName("testXXX");
 
             int result = userMapper.updateByIdSelective(sysUser);
+
+            System.out.println("result:"+result);
+
+        }finally {
+            sqlSession.commit();
+            sqlSession.close();
+        }
+    }
+
+    /**
+     * 动态sql之insert的动态插入
+     */
+    @Test
+    public void testInsert2Selective(){
+        SqlSession sqlSession = getSqlSession();
+        try{
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            SysUser sysUser = new SysUser();
+            sysUser.setUserName("testInsert2");
+            sysUser.setUserPassword("1133333");
+            sysUser.setUserInfo("insert动态sql的使用2");
+            sysUser.setUserEmail("testInser2@mybatis.tk");
+            sysUser.setHeadImg(new byte[]{1,2,2});
+            sysUser.setCreateTime(new Date());
+
+            int result = userMapper.insertInto4(sysUser);
 
             System.out.println("result:"+result);
 
