@@ -26,23 +26,30 @@ public interface UserMapper {
     List<SysRole> selectRolesBuUserIdAndRoleAbled(@Param("userId")Long userId,@Param("enabled")Integer enabled);
 
     /**
-     * 根据动态条件查询用户信息
+     * 动态sql-if-根据动态条件查询用户信息
      * @param sysUser
      * @return
      */
     List<SysUser> selectByUser(SysUser sysUser);
 
     /**
-     * 根据主键进行更新
+     * 动态sql-if-根据主键进行更新
      * @param sysUser
      * @return
      */
     int updateByIdSelective(SysUser sysUser);
 
     /**
-     * 动态sql之insert的动态sql插入
+     * 动态sql-if-insert的动态sql插入
      * @param sysUser
      * @return
      */
     int insertInto4(SysUser sysUser);
+
+    /**
+     * 动态sql-choose-根据用户id或用户名查询
+     * @param sysUser
+     * @return
+     */
+    SysUser selectByIdOrUserName(SysUser sysUser);
 }

@@ -214,7 +214,7 @@ public class UserMapperTest extends BaseMapperTest{
     }
 
     /**
-     * 动态sql之根据动态条件查询用户信息
+     * 动态sql-if-根据动态条件查询用户信息
      */
     @Test
     public void testSelectByUser(){
@@ -234,7 +234,7 @@ public class UserMapperTest extends BaseMapperTest{
     }
 
     /**
-     * 动态sql之根据主键更新
+     * 动态sql-if-根据主键更新
      */
     @Test
     public void testUpdateByIdSelective(){
@@ -257,7 +257,7 @@ public class UserMapperTest extends BaseMapperTest{
     }
 
     /**
-     * 动态sql之insert的动态插入
+     * 动态sql-if-insert的动态插入
      */
     @Test
     public void testInsert2Selective(){
@@ -273,6 +273,28 @@ public class UserMapperTest extends BaseMapperTest{
             sysUser.setCreateTime(new Date());
 
             int result = userMapper.insertInto4(sysUser);
+
+            System.out.println("result:"+result);
+
+        }finally {
+            sqlSession.commit();
+            sqlSession.close();
+        }
+    }
+
+    /**
+     * 动态sql-choose-根据用户id或用户名查询
+     */
+    @Test
+    public void testSelectByIdUserName(){
+        SqlSession sqlSession = getSqlSession();
+        try{
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            SysUser sysUser = new SysUser();
+            //sysUser.setId(1L);
+            sysUser.setUserName("testInsert");
+
+            SysUser result = userMapper.selectByIdOrUserName(sysUser);
 
             System.out.println("result:"+result);
 
