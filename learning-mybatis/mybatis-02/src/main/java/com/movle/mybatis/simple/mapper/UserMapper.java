@@ -52,4 +52,11 @@ public interface UserMapper {
      * @return
      */
     SysUser selectByIdOrUserName(SysUser sysUser);
+
+    /**
+     * 动态sql-where-使用where标签根据动态条件查询用户信息
+     * @param sysUser
+     * @return
+     */
+    List<SysUser> selectByUser2(SysUser sysUser);
 }

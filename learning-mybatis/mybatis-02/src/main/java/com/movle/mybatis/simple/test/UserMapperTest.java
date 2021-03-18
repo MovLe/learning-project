@@ -303,4 +303,24 @@ public class UserMapperTest extends BaseMapperTest{
             sqlSession.close();
         }
     }
+
+    /**
+     * 动态sql-where-根据动态条件查询用户信息
+     */
+    @Test
+    public void testSelectByUser2(){
+        SqlSession sqlSession = getSqlSession();
+        try{
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            SysUser sysUser = new SysUser();
+//            sysUser.setUserName("est");
+            sysUser.setUserEmail("test3@mybatis.tk");
+            List<SysUser> sysUsers = userMapper.selectByUser2(sysUser);
+
+            printList(sysUsers);
+        }finally {
+            sqlSession.commit();
+            sqlSession.close();
+        }
+    }
 }
