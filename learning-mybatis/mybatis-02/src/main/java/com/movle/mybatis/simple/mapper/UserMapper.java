@@ -59,4 +59,11 @@ public interface UserMapper {
      * @return
      */
     List<SysUser> selectByUser2(SysUser sysUser);
+
+    /**
+     * 动态sql-set-根据主键进行更新
+     * @param sysUser
+     * @return
+     */
+    int updateByIdSelective2(SysUser sysUser);
 }

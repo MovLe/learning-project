@@ -323,4 +323,27 @@ public class UserMapperTest extends BaseMapperTest{
             sqlSession.close();
         }
     }
+    /**
+     * 动态sql-where-根据主键更新
+     */
+    @Test
+    public void testUpdateByIdSelective2(){
+        SqlSession sqlSession = getSqlSession();
+        try{
+
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            SysUser sysUser=new SysUser();
+            sysUser.setId(1008L);
+            sysUser.setUserName("testYYY");
+            sysUser.setUserInfo("oooooo");
+
+            int result = userMapper.updateByIdSelective2(sysUser);
+
+            System.out.println("result:"+result);
+
+        }finally {
+            sqlSession.commit();
+            sqlSession.close();
+        }
+    }
 }
