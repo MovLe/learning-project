@@ -44,7 +44,24 @@ public class UserMapperTest extends BaseMapperTest{
             UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
             SysUser sysUser = userMapper.selectUserAndRoleById2(1001L);
 
-            System.out.println("sysUser:"+sysUser);
+            System.out.println("修改resultMap实现:sysUser:"+sysUser);
+        }finally {
+            sqlSession.commit();
+            sqlSession.close();
+        }
+    }
+
+    /**
+     * 高级结果映射-一对一映射-使用resultMap配置一对一映射-使用resultMap继承-根据用户id获取用户信息和用户的角色信息
+     */
+    @Test
+    public void testSelectUserAndRoleById3(){
+        SqlSession sqlSession = getSqlSession();
+        try{
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            SysUser sysUser = userMapper.selectUserAndRoleById3(1001L);
+
+            System.out.println("resultMap继承实现:sysUser:"+sysUser);
         }finally {
             sqlSession.commit();
             sqlSession.close();
