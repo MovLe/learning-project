@@ -3,7 +3,6 @@ package com.movle.mybatis.simple.test;
 import com.movle.mybatis.simple.domain.SysRole;
 import com.movle.mybatis.simple.domain.SysUser;
 import com.movle.mybatis.simple.mapper.UserMapper;
-import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
