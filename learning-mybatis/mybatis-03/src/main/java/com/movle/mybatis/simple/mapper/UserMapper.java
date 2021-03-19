@@ -8,4 +8,9 @@ public interface UserMapper {
      */
     SysUser selectUserAndRoleById(Long id);
 
+    /**
+     * 高级结果映射-一对一映射-使用resultMap配置一对一映射-根据用户id获取用户信息和用户的角色信息
+     */
+    SysUser selectUserAndRoleById2(Long id);
 }
+

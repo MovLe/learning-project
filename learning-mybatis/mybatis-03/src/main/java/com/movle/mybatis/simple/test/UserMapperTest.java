@@ -34,5 +34,22 @@ public class UserMapperTest extends BaseMapperTest{
         }
     }
 
+    /**
+     * 高级结果映射-一对一映射-使用resultMap配置一对一映射-根据用户id获取用户信息和用户的角色信息
+     */
+    @Test
+    public void testSelectUserAndRoleById2(){
+        SqlSession sqlSession = getSqlSession();
+        try{
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            SysUser sysUser = userMapper.selectUserAndRoleById2(1001L);
+
+            System.out.println("sysUser:"+sysUser);
+        }finally {
+            sqlSession.commit();
+            sqlSession.close();
+        }
+    }
+
 
 }
