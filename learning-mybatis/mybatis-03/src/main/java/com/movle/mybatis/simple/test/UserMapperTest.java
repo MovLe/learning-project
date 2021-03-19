@@ -78,12 +78,27 @@ public class UserMapperTest extends BaseMapperTest{
             UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
             SysUser sysUser = userMapper.selectUserAndRoleById4(1001L);
 
-            System.out.println("resultMap继承实现:sysUser:"+sysUser);
+            System.out.println("resultMap的association标签配置实现:sysUser:"+sysUser);
         }finally {
             sqlSession.commit();
             sqlSession.close();
         }
     }
 
+    /**
+     * 高级结果映射-一对一映射-association标签的嵌套查询
+     */
+    @Test
+    public void testSelectUserAndRoleByIdSelect(){
+        SqlSession sqlSession = getSqlSession();
+        try{
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+            SysUser sysUser = userMapper.selectUserAndRoleByIdSelect(1001L);
+            System.out.println("association标签的嵌套查询:sysUser:"+sysUser);
 
+        }finally {
+            sqlSession.commit();
+            sqlSession.close();
+        }
+    }
 }
