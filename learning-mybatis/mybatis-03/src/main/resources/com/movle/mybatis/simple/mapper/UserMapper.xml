@@ -28,7 +28,7 @@
         <result property="role.createTime" column="create_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
-   <select id="selectUserAndRoleById" resultType="com.movle.mybatis.simple.domain.SysUser">
+    <select id="selectUserAndRoleById" resultType="com.movle.mybatis.simple.domain.SysUser">
        select
             u.id,
             u.user_name userName,
@@ -45,7 +45,7 @@
         inner join sys_user_role ur on u.id = ur.user_id
         inner join sys_role r on ur.role_id = r.id
         where u.id = #{id}
-   </select>
+    </select>
 
     <select id="selectUserAndRoleById2" resultMap="userRoleMap">
        select
@@ -64,7 +64,7 @@
         inner join sys_user_role ur on u.id = ur.user_id
         inner join sys_role r on ur.role_id = r.id
         where u.id = #{id}
-   </select>
+    </select>
     <resultMap id="userRoleMap2" extends="userMap" type="com.movle.mybatis.simple.domain.SysUser">
         <result property="role.id" column="role_id"/>
         <result property="role.roleName" column="role_name"/>
@@ -89,5 +89,32 @@
         inner join sys_user_role ur on u.id = ur.user_id
         inner join sys_role r on ur.role_id = r.id
         where u.id = #{id}
-   </select>
+    </select>
+    <resultMap id="userRoleMap3" extends="userMap" type="com.movle.mybatis.simple.domain.SysUser">
+        <association property="role" columnPrefix="role_" javaType="com.movle.mybatis.simple.domain.SysRole">
+            <result property="id" column="id"/>
+            <result property="roleName" column="role_name"/>
+            <result property="enabled" column="enabled"/>
+            <result property="createBy" column="create_by"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        </association>
+    </resultMap>
+    <select id="selectUserAndRoleById4" resultMap="userRoleMap3">
+       select
+            u.id,
+            u.user_name,
+            u.user_email,
+            u.user_info,
+            u.head_img,
+            u.create_time,
+            r.id role_id,
+            r.role_name role_role_name,
+            r.enabled role_enabled,
+            r.create_by role_create_by,
+            r.create_time role_create_time
+        from sys_user u
+        inner join sys_user_role ur on u.id = ur.user_id
+        inner join sys_role r on ur.role_id = r.id
+        where u.id = #{id}
+    </select>
 </mapper>
