@@ -5,6 +5,8 @@ import com.movle.mybatis.simple.mapper.UserMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
+import java.util.List;
+
 /**
  * @ClassName UserMapperTest
  * @MethodDesc: 用于测试mybatis高级查询
@@ -99,6 +101,30 @@ public class UserMapperTest extends BaseMapperTest{
         }finally {
             sqlSession.commit();
             sqlSession.close();
+        }
+    }
+
+    /**
+     * 高级结果映射-一对多映射-collection集合的嵌套结果映射-获取所有的用户以及对应的角色
+     */
+    @Test
+    public void testSelectAllUserAndRoles(){
+        SqlSession sqlSession = getSqlSession();
+        try{
+            UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+
+            List<SysUser> userList = userMapper.selectAllUserAndRoles();
+
+            printList(userList);
+        }finally {
+            sqlSession.commit();
+            sqlSession.close();
+        }
+    }
+
+    public void printList(List<SysUser> sysUsers){
+        for (SysUser s:sysUsers) {
+            System.out.println("s:"+s);
         }
     }
 }

@@ -2,6 +2,7 @@ package com.movle.mybatis.simple.domain;
 
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @ClassName SysUser
@@ -23,6 +24,16 @@ public class SysUser {
     private Date createTime;
 
     private SysRole role;
+
+    private List<SysRole> roleList;
+
+    public List<SysRole> getRoleList() {
+        return roleList;
+    }
+
+    public void setRoleList(List<SysRole> roleList) {
+        this.roleList = roleList;
+    }
 
     public SysRole getRole() {
         return role;
@@ -97,6 +108,7 @@ public class SysUser {
                 ", headImg=" + Arrays.toString(headImg) +
                 ", createTime=" + createTime +
                 ", role=" + role +
+                ", roleList=" + roleList +
                 '}';
     }
 }
