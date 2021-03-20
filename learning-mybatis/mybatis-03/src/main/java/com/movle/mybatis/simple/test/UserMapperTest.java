@@ -103,7 +103,6 @@ public class UserMapperTest extends BaseMapperTest{
             sqlSession.close();
         }
     }
-
     /**
      * 高级结果映射-一对多映射-collection集合的嵌套结果映射-获取所有的用户以及对应的角色
      */
