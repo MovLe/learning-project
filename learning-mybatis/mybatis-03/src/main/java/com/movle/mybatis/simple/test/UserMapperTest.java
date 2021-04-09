@@ -5,7 +5,11 @@ import com.movle.mybatis.simple.mapper.UserMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * @ClassName UserMapperTest
@@ -125,5 +129,37 @@ public class UserMapperTest extends BaseMapperTest{
         for (SysUser s:sysUsers) {
             System.out.println("s:"+s);
         }
+    }
+
+
+    @Test
+    public void test333(){
+        String dateStr = "Wed Sep 16 11:26:23 CST 2009";
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.US);
+
+        //java.util.Date对象
+        Date date = null;
+        try {
+            date = (Date) sdf.parse(dateStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        //2009-09-16
+        String formatStr = new SimpleDateFormat("yyyy-MM-dd").format(date);
+        System.out.println(formatStr);
+
+        //2009-09-16 11:26:23
+        String formatStr2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+        System.out.println(formatStr2);
+    }
+
+    @Test
+    public void test4(){
+        double rondom = (Math.random()*100);
+
+        String b= "test"+rondom;
+
+        System.out.println(b);
     }
 }
