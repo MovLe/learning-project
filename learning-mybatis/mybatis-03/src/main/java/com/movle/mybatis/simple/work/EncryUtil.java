@@ -16,7 +16,7 @@ public class EncryUtil {
      */
     public static String encrypt(String plainText) {
         try {
-            return new DES().encrypt(plainText);
+            return new DesEncryption().encrypt(plainText);
         } catch (Exception e) {
             return null;
         }
@@ -28,7 +28,7 @@ public class EncryUtil {
      */
     public static String encrypt(String plainText, String key) {
         try {
-            return new DES(key).encrypt(plainText);
+            return new DesEncryption(key).encrypt(plainText);
         } catch (Exception e) {
             return null;
         }
@@ -40,7 +40,7 @@ public class EncryUtil {
      */
     public static String decrypt(String plainText) {
         try {
-            return new DES().decrypt(plainText);
+            return new DesEncryption().decrypt(plainText);
         } catch (Exception e) {
             return null;
         }
@@ -52,7 +52,7 @@ public class EncryUtil {
      */
     public static String decrypt(String plainText, String key) {
         try {
-            return new DES(key).decrypt(plainText);
+            return new DesEncryption(key).decrypt(plainText);
         } catch (Exception e) {
             return null;
         }

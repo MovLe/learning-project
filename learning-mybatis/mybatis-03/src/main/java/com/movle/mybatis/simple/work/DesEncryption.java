@@ -14,7 +14,7 @@ import java.security.Security;
  **/
 
 
-public class DES {
+public class DesEncryption {
     //默认的密钥，根据情况修改
     private static String strDefaultKey = "abcDEF123";
     private Cipher encryptCipher = null;
@@ -25,7 +25,7 @@ public class DES {
      * 默认构造方法，使用默认密钥
      * @throws Exception
      */
-    public DES() throws Exception {
+    public DesEncryption() throws Exception {
         this(strDefaultKey);
     }
     /**
@@ -33,7 +33,7 @@ public class DES {
      * @param strKey 指定的密钥
      * @throws Exception
      */
-    public DES(String strKey) throws Exception {
+    public DesEncryption(String strKey) throws Exception {
         Security.addProvider(new com.sun.crypto.provider.SunJCE());
         Key key = getKey(strKey.getBytes());
         encryptCipher = Cipher.getInstance("DES");

@@ -12,7 +12,7 @@ package com.movle.mybatis.simple.work;
 
 public class TestDES {
     public static void main(String[] args) throws Exception {
-        String str = "shrm-taobaobao&&1276598765667";
+        String str = "shrm-taobaobao&&9000309118&&1276598765667";
         String t = "";
         System.out.println("加密后：" + (t = EncryUtil.encrypt(str)));
         System.out.println("解密后：" + EncryUtil.decrypt(t));
